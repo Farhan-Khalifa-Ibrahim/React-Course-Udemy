@@ -7,7 +7,7 @@ class App extends React.Component {
         super(props);
 
         this.state = {
-            lat: 40,
+            lat: '',
             errorMessage: ''
         };
 
@@ -19,13 +19,14 @@ class App extends React.Component {
 
 
     render() {
+        console.log(this.state.errorMessage);
         if (this.state.errorMessage && !this.state.lat) {
             return <h1>Error: {this.state.errorMessage}</h1>;
-        } else if (!this.state.errorMessage && this.state.lat) {
-            return <h1>Latitude: {this.state.lat}</h1>;
-        } else {
-            return <h1>Loading...</h1>;
         }
+        if (!this.state.errorMessage && this.state.lat) {
+            return <h1>Latitude: {this.state.lat}</h1>;
+        }
+        return <h1>Loading...</h1>;
     }
 }
 
